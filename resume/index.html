@@ -230,6 +230,9 @@
             .page-break {
                 display: none;
             }
+            .print-only {
+                display: none;
+            }
         }
 
         @media print {
@@ -307,6 +310,10 @@
             .no-print,
             .no-print * {
                 display: none !important;
+            }
+
+            .print-only {
+                display: block;
             }
         }
     </style>
@@ -465,7 +472,7 @@
                                 legacy system data until the user confirms the change</li>
                         </ul>
                         <div class="page-break"></div>
-                        <h4 class="no-print">Garvin-Allen Solutions - Software Developer - Continued</h4>
+                        <h4 class="print-only">Garvin-Allen Solutions - Software Developer - Continued</h4>
                         <h5>Front-end development</h5>
                         <ul class="highlights">
                             <li class="bullet">Led front-end development of the core product redesign</li>
