@@ -1,0 +1,19 @@
+{
+  "name": "benmacleod.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "pretty": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@labs.bitswamp.com:2222/ben/benmacleod.com.git"
+  },
+  "author": "Ben MacLeod",
+  "license": "UNLICENSED"
+}
