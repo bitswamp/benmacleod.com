@@ -85,7 +85,7 @@ const body = `<body>
 `
 
 const html = `<html>
-  ${header}
+  ${head}
   ${body}
 </html>
 `
