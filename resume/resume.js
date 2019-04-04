@@ -1,7 +1,61 @@
 const pretty = require('pretty')
 
+// resume data
 const resume = require('./resume.json')
 
+// helper functions for lists
+const paragraphs = (list) => list.map(para => `<p>${para}</p>`)
+
+const bullets = (list) => list.map(item => `<li>${item}</li>`)
+
+const sections = (list) => list.map(section => `<section>
+  <h5>${section.title}</h5>
+  <ul>
+    ${bullets(section.content).join("\n")}
+  </ul>
+</section>
+`)
+
+const jobs = (list) => list.map(job => `<section class="work-entry">
+  <h4 class="position">
+    ${job.position}
+    <span class="date">
+      ${job.date}
+    </span>
+  </h4>
+  <div class="employer">
+    <a href="${job.website}">
+      ${job.employer}
+      <span class="print-only">
+        (${job.website})
+      </span>
+    </a>
+  </div>
+  <div class="employer-description">
+    <p>
+      ${job.business}
+    </p>
+  </div>
+  ${sections(job.sections).join("")}
+</section>
+`)
+
+const programs = (list) => list.map(program => `<section class="education-entry">
+  <h4 class="program">
+    ${program.program}
+    <span class="date">
+      ${program.date}
+    </span>
+  </h4>
+  <div class="school">
+    ${program.school}
+    (${program.location})
+  </div>
+  ${sections(program.sections).join("")}
+</section>
+`)
+
+// build html document from template parts
 const head = `<head>
     <meta charset="utf-8">
     <title>${resume.name} - ${resume.title} Resume</title>
@@ -36,7 +90,7 @@ const contact = `<section id="contact">
     <div>
       <dt>Email</dt>
       <dd>
-        <a href="mailto:${resume.contact.email}">
+        <a href="mailto:${resume.contact.email}" aria-label="email address">
           ${resume.contact.email}
         </a>
       </dd>
@@ -44,7 +98,7 @@ const contact = `<section id="contact">
     <div>
       <dt>Website</dt>
       <dd>
-        <a href="${resume.contact.website}">
+        <a href="${resume.contact.website}" aria-label="personal homepage">
           ${resume.contact.website}
         </a>
       </dd>
@@ -52,7 +106,7 @@ const contact = `<section id="contact">
     <div>
       <dt>Github</dt>
       <dd>
-        <a href="https://github.com/${resume.contact.github}">
+        <a href="https://github.com/${resume.contact.github}" aria-label="github account">
           ${resume.contact.github}
         </a>
       </dd>
@@ -61,17 +115,44 @@ const contact = `<section id="contact">
 </section>
 `
 
-const intro = ``
+const about = `<section id="about">
+  <h3>About</h3>
+  ${paragraphs(resume.about).join("\n")}
+</section>
+`
 
-const skills = ``
+const skills = `<section id="skills">
+  <h3>Skills</h3>
+  <section>
+    <h4 id="primary-skills">Primary</h4>
+    <ul aria-labelledby="primary-skills">
+      ${bullets(resume.skills.primary).join("\n")}
+    </ul>
+  </section>
+  <section>
+    <h4 id="secondary-skills">Secondary</h4>
+    <ul aria-labelledby="secondary-skills">
+      ${bullets(resume.skills.secondary).join("\n")}
+    </ul>
+  </section>
+</section>
+`
 
-const work = ``
+const work = `<section id="work">
+  <h3>Work</h3>
+  ${jobs(resume.work).join("\n")}
+</section>
+`
 
-const education = ``
+const education = `<section id="education">
+  <h3>Education</h3>
+  ${programs(resume.education).join("\n")}
+</section>
+`
 
 const main = `<main>
   ${contact}
-  ${intro}
+  ${about}
   ${skills}
   ${work}
   ${education}
@@ -90,4 +171,5 @@ const html = `<html>
 </html>
 `
 
-console.log(pretty(html));
+// return the prettyprinted html, suitable to be piped to a file
+console.log(pretty(html, {ocd: true}));
