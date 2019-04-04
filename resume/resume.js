@@ -32,6 +32,32 @@ const header = `<header>
 
 const contact = `<section id="contact">
   <h3>Contact</h3>
+  <dl>
+    <div>
+      <dt>Email</dt>
+      <dd>
+        <a href="mailto:${resume.contact.email}">
+          ${resume.contact.email}
+        </a>
+      </dd>
+    </div>
+    <div>
+      <dt>Website</dt>
+      <dd>
+        <a href="${resume.contact.website}">
+          ${resume.contact.website}
+        </a>
+      </dd>
+    </div>
+    <div>
+      <dt>Github</dt>
+      <dd>
+        <a href="https://github.com/${resume.contact.github}">
+          ${resume.contact.github}
+        </a>
+      </dd>
+    </div>
+  </dl>
 </section>
 `
 
