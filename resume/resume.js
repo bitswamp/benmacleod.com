@@ -165,7 +165,8 @@ const body = `<body>
 </body>
 `
 
-const html = `<html>
+const html = `<!DOCTYPE html>
+<html lang=${resume.language}>
   ${head}
   ${body}
 </html>
