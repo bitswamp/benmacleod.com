@@ -26,10 +26,10 @@ const jobs = (list) => list.map(job => `<section class="work-entry">
   <div class="employer">
     <a href="${job.website}">
       ${job.employer}
-      <span class="print-only">
-        (${job.website})
-      </span>
     </a>
+    <span class="print-only">
+      (${job.website})
+    </span>
   </div>
   <div class="employer-description">
     <p>
