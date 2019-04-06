@@ -1,9 +1,9 @@
 const pretty = require('pretty')
 
-// resume data
+// load resume data from file
 const resume = require('./resume.json')
 
-// helper functions for lists
+// helper functions for lists (paragraphs, jobs, etc)
 const paragraphs = (list) => list.map(para => `<p>${para}</p>`)
 
 const bullets = (list) => list.map(item => `<li>${item}</li>`)
@@ -17,36 +17,32 @@ const sections = (list) => list.map(section => `<section>
 `)
 
 const jobs = (list) => list.map(job => `<section class="work-entry">
-  <h4 class="position">
-    ${job.position}
-    <span class="date">
-      ${job.date}
-    </span>
-  </h4>
+  <header>
+    <h4 class="position">
+      ${job.position}
+    </h4>
+    <span class="line"></span>
+    <span class="date">${job.date}</span>
+  </header>
   <div class="employer">
     <a href="${job.website}">
       ${job.employer}
     </a>
-    <span class="print-only">
-      (${job.website})
-    </span>
-  </div>
-  <div class="employer-description">
-    <p>
-      ${job.business}
-    </p>
+    <span class="print-only">(${job.business_shorter})</span>
+    <p class="employer-description no-print">${job.business}</p>
   </div>
   ${sections(job.sections).join("")}
 </section>
 `)
 
 const programs = (list) => list.map(program => `<section class="education-entry">
-  <h4 class="program">
-    ${program.program}
-    <span class="date">
-      ${program.date}
-    </span>
-  </h4>
+  <header>
+    <h4 class="position">
+      ${program.program}
+    </h4>
+    <span class="line"></span>
+    <span class="date">${program.date}</span>
+  </header>
   <div class="school">
     ${program.school}
     (${program.location})
@@ -106,7 +102,7 @@ const contact = `<section id="contact">
     <div>
       <dt>Github</dt>
       <dd>
-        <a href="https://github.com/${resume.contact.github}" aria-label="github account">
+        <a href="https://github.com/${resume.contact.github}" class="github" aria-label="github account">
           ${resume.contact.github}
         </a>
       </dd>
@@ -123,18 +119,20 @@ const about = `<section id="about">
 
 const skills = `<section id="skills">
   <h3>Skills</h3>
-  <section>
-    <h4 id="primary-skills">Primary</h4>
-    <ul aria-labelledby="primary-skills">
-      ${bullets(resume.skills.primary).join("\n")}
-    </ul>
-  </section>
-  <section>
-    <h4 id="secondary-skills">Secondary</h4>
-    <ul aria-labelledby="secondary-skills">
-      ${bullets(resume.skills.secondary).join("\n")}
-    </ul>
-  </section>
+  <div>
+    <section>
+      <h4 id="primary-skills">Primary</h4>
+      <ul aria-labelledby="primary-skills">
+        ${bullets(resume.skills.primary).join("\n")}
+      </ul>
+    </section>
+    <section>
+      <h4 id="secondary-skills">Secondary</h4>
+      <ul aria-labelledby="secondary-skills">
+        ${bullets(resume.skills.secondary).join("\n")}
+      </ul>
+    </section>
+  </div>
 </section>
 `
 
@@ -173,4 +171,5 @@ const html = `<!DOCTYPE html>
 `
 
 // return the prettyprinted html, suitable to be piped to a file
+// (sorry for the ableist property name from the author of pretty)
 console.log(pretty(html, {ocd: true}));

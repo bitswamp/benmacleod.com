@@ -2,45 +2,80 @@
 
 html {
     margin: 0;
+    padding: 0;
 }
 
 body {
     background: #fff;
     font-family: Lato, sans-serif;
-    line-height: 1.5;
+    font-display: fallback;
+    line-height: 1.6;
     margin: 0;
-    max-width: 900px;
-}
-
-header {
-    background: #f4f6f6;
-    margin-bottom: 0px;
-    padding: 2.5em 1em 1em 1em;
     width: 100%;
 }
 
-header h2 {
-    color: #999;
-    font-size: 24px;
+body > header, main {
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    box-sizing: border-box;
+}
+
+body > header {
+    background: #f4f6f6;
+    margin-bottom: 0px;
+    padding-top: 1em;
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-weight: normal;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #777;
+    font-size: 2em;
+    margin-top: 0;
+    font-weight: normal;
 }
 
 main {
-    max-width: 800px;
-    padding: 0 1em;
+    padding-top: 0;
+    width: 100%;
 }
 
-main h3 {
+h3 {
     color: #4078c0;
     font-size: 1.5em;
+    margin-bottom: 0.75em;
+    margin-top: 1.5em;
 }
 
-section > ul {
-    padding-left: 1em;
+h4 {
+    margin-top: 1em;
+    margin-bottom: 0;
 }
 
-h4 span:first-child {
-    color: #000;
-    font-weight: bold;
+h5 {
+    font-size: 1em;
+    margin-bottom: 0;
+    margin-top: 0.75em;
+}
+
+a, a:visited {
+    color: #4078c0;
+}
+
+main > section {
+    width: 100%;
+}
+
+section ul {
+    margin-top: 0.25em;
+    padding-left: 1.25em;
+    margin-bottom: 0;
 }
 
 #contact {
@@ -51,19 +86,193 @@ h4 span:first-child {
 #contact dl {
     display: flex;
     flex-direction: column;
+    margin: 0;
 }
 
 #contact dl div {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
-#contact dl div dt {
-    width: 20%;
+#contact dl dt {
+    width: 100px;
 }
 
-@media screen {
+#contact dl dd {
+    margin-left: 0;
+}
+
+#skills > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: -1em;
+}
+
+#skills > div section {
+    margin-right: 0.5em;
+}
+
+#primary-skills, #secondary-skills {
+    margin-top: 1em;
+}
+
+.work-entry, .education-entry {
+    margin-top: 0.5em;
+    margin-bottom: 2.5em;
+}
+
+#work header, #education header {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+#work header h4, #education header h4 {
+    margin-top: 0;
+}
+
+#work header span, #education header span {
+    font-weight: bold;
+}
+
+p {
+    margin: 0;
+}
+
+p + p {
+    margin-top: 0.5em;
+}
+
+.line {
+    display: none;
+}
+
+@media (min-width: 380px) {
+    #work header, #education header {
+        flex-direction: row;
+    }
+    
+    .line {
+        display: inherit;
+        height: 0.8em;
+        flex-grow: 1;
+        border-bottom: 1px solid #bbb;
+        margin: 0 0.5em;
+    }
+}
+
+@media (min-width: 760px) {
+    body > header {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        padding-top: 2em;
+        padding-bottom: 2em;
+    }
+
+    main > section, body > header h1, body > header h2 {
+        width: 700px;
+        margin: auto;
+    }
+
+    #skills > div {
+        justify-content: start;
+    }
+
+    #skills > div section {
+        width: 250px;
+    }
+}
+
+@media not print {
     .print-only {
+        display: none !important;
+    }
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    html {
+        padding: 0 2em;
+        line-height: 1.5;
+    }
+
+    body > header {
+        padding-top: 0.5em;
+        padding-bottom: 0;
+    }
+
+    h1, h2 {
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        border-bottom: 1px solid #4078c0;
+        margin-top: 0.9em;
+        margin-bottom: 0.25em;
+    }
+
+    h5 {
+        margin-top: 0.5em;
+    }
+
+    main {
+        padding-top: 0;
+    }
+
+    #contact {
+        position: absolute;
+        top: 0.9em;
+        right: 2em;
+        width: auto;
+        font-size: 1.2em;
+    }
+
+    #contact h3 {
         display: none;
+    }
+
+    #contact dt {
+        font-weight: bold;
+    }
+
+    #skills > div {
+        justify-content: start;
+    }
+
+    #skills > div section {
+        width: 250px;
+    }
+
+    #work header, #education header {
+        justify-content: space-between;
+    }
+
+    a, a:visited {
+        text-decoration: none;
+        color: black;
+    }
+
+    .line {
+        display: none;
+    }
+
+    .work-entry, .education-entry {
+        margin-bottom: 1em;
+    }
+
+    .work-entry + .work-entry, .education-entry + .education-entry {
+        border-top: 1px solid #999;
+        padding-top: 1em;
     }
 }
