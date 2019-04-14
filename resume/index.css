@@ -7,18 +7,18 @@ html {
 
 body {
     background: #fff;
-    font-family: Lato, sans-serif;
     font-display: fallback;
+    font-family: Lato, sans-serif;
     line-height: 1.6;
     margin: 0;
     width: 100%;
 }
 
 body > header, main {
+    box-sizing: border-box;
     padding-bottom: 1em;
     padding-left: 1em;
     padding-right: 1em;
-    box-sizing: border-box;
 }
 
 body > header {
@@ -30,15 +30,15 @@ body > header {
 
 h1 {
     margin-bottom: 0;
-    font-weight: normal;
     font-size: 2.5em;
+    font-weight: normal;
 }
 
 h2 {
     color: #777;
     font-size: 2em;
-    margin-top: 0;
     font-weight: normal;
+    margin-top: 0;
 }
 
 main {
@@ -54,8 +54,8 @@ h3 {
 }
 
 h4 {
-    margin-top: 1em;
     margin-bottom: 0;
+    margin-top: 1em;
 }
 
 h5 {
@@ -73,9 +73,9 @@ main > section {
 }
 
 section ul {
+    margin-bottom: 0;
     margin-top: 0.25em;
     padding-left: 1.25em;
-    margin-bottom: 0;
 }
 
 #contact {
@@ -120,8 +120,8 @@ section ul {
 }
 
 .work-entry, .education-entry {
-    margin-top: 0.5em;
     margin-bottom: 2.5em;
+    margin-top: 0.5em;
 }
 
 #work header, #education header {
@@ -156,26 +156,26 @@ p + p {
     }
     
     .line {
-        display: inherit;
-        height: 0.8em;
-        flex-grow: 1;
         border-bottom: 1px solid #bbb;
+        display: inherit;
+        flex-grow: 1;
+        height: 0.8em;
         margin: 0 0.5em;
     }
 }
 
 @media (min-width: 760px) {
     body > header {
+        align-content: center;
         display: flex;
         flex-direction: column;
-        align-content: center;
-        padding-top: 2em;
         padding-bottom: 2em;
+        padding-top: 2em;
     }
 
     main > section, body > header h1, body > header h2 {
-        width: 700px;
         margin: auto;
+        width: 700px;
     }
 
     #skills > div {
@@ -199,13 +199,13 @@ p + p {
     }
 
     html {
-        padding: 0 2em;
         line-height: 1.5;
+        padding: 0 2em;
     }
 
     body > header {
-        padding-top: 0.5em;
         padding-bottom: 0;
+        padding-top: 0.5em;
     }
 
     h1, h2 {
@@ -218,8 +218,8 @@ p + p {
 
     h3 {
         border-bottom: 1px solid #4078c0;
-        margin-top: 0.9em;
         margin-bottom: 0.25em;
+        margin-top: 0.9em;
     }
 
     h5 {
@@ -231,11 +231,11 @@ p + p {
     }
 
     #contact {
-        position: absolute;
-        top: 0.9em;
-        right: 2em;
-        width: auto;
         font-size: 1.2em;
+        position: absolute;
+        right: 2em;
+        top: 0.9em;
+        width: auto;
     }
 
     #contact h3 {
@@ -259,8 +259,8 @@ p + p {
     }
 
     a, a:visited {
-        text-decoration: none;
         color: black;
+        text-decoration: none;
     }
 
     .line {
